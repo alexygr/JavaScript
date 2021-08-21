@@ -61,7 +61,7 @@ function numberCase(num) {
 
 }
 
-console.log(numberCase(num));
+numberCase(num);
 
 // 5. Реализовать четыре основные арифметические операции в виде функций с двумя параметрами.
 //Обязательно использовать оператор return.
@@ -86,17 +86,13 @@ console.log("задание 6:")
 function mathOperation(arg1, arg2, operation) {
     switch (operation) {
         case '+':
-            console.log(sum(arg1, arg2));
-            break;
+            return sum(arg1, arg2);
         case '-':
-            console.log(dif(arg1, arg2));
-            break;
+            return dif(arg1, arg2);
         case '*':
-            console.log(mult(arg1, arg2));
-            break;
+            return mult(arg1, arg2);
         case '/':
-            console.log(div(arg1, arg2));
-            break;
+            return div(arg1, arg2);
     }
 }
 
