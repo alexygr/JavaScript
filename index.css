@@ -1,0 +1,40 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.chessboard{
+    display: flex;
+}
+.board{
+    border: 1px solid black ;
+    max-width: fit-content;
+}
+.row{
+    display: flex;
+}
+.column{
+    width: 35px;
+    height: 35px;;
+    box-sizing: border-box;
+}
+.number{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.right{
+    text-align: right;
+    margin-right: 4px;
+}
+.center{
+    text-align:center ;
+}
+.white{
+    border: 1px solid rgb(245, 240, 193);
+    background-color: rgb(245, 240, 193);
+
+}
+.black{
+    border: 1px solid rgb(56, 101, 153);
+    background-color: rgb(56, 101, 153);
+}
