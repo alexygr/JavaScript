@@ -1,0 +1,71 @@
+1. Для практикума из занятия 7 продумать, где можно применить замыкания.
+
+Написать функцию для рандома
+function setRandom(x) {
+    return () => Math.floor(Math.random() * x)
+}
+
+var getRundomX = setRandom(FIELD_SIZE_X);
+var getRundomY = setRandom(FIELD_SIZE_Y);
+
+
+Функции createFood, createProblem почти одинаковые, отличаются только именем класса
+function setCellItem(cellItem) {
+    return () => {
+        var foodCreated = false;
+
+        while (!foodCreated) {
+            // рандом
+            var food_x = getRundomX();
+            var food_y = getRundomY();
+
+            var food_cell = document.getElementsByClassName('cell-' + food_y + '-' + food_x)[0];
+            var food_cell_classes = food_cell.getAttribute('class').split(' ');
+
+            // проверка на змейку
+            if (!food_cell_classes.includes('snake-unit') && !food_cell_classes.includes('problem-unit')) {
+                var classes = '';
+                for (var i = 0; i < food_cell_classes.length; i++) {
+                    classes += food_cell_classes[i] + ' ';
+                }
+
+                food_cell.setAttribute('class', classes + cellItem);
+                foodCreated = true;
+            }
+        }
+    }
+}
+
+var createFood = setCellItem('food-unit');
+var createProblem = setCellItem('problem-unit')
+
+
+2. Не выполняя кода, ответить, что выведет браузер и почему:
+if (!("a" in window)) {
+    var a = 1;
+}
+alert(a); // 'undefinet' переменная как бы объявленна но из за условия значение не присвоенно
+
+var b = function a(x) {
+    x && a(--x);
+};
+alert(a) ; // будет ошибка потому что нету такой функции или переменной 
+
+function a(x) {
+    return x * 2;
+}
+var a;
+alert(a); // выведет объект функции (а) так как значение (var a) не присвоенно
+
+
+function b(x, y, a) {
+    arguments[2] = 10;
+    alert(a);
+}
+b(1, 2, 3);  // выведет 10.   Объект arguments — это подобный массиву объект, который содержит аргументы, переданные в функцию. 
+
+
+function a() {
+    alert(this);
+}
+a.call(null); // выведет объект window, this в глобальной области указывает на window
